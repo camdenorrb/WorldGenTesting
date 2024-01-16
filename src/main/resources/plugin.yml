@@ -1,10 +1,16 @@
-name: KotlinPluginTemplate
+name: WorldGenTesting
 version: "1.0.0"
 author: "MrKitty_Cat"
-api-version: 1.19
-main: dev.twelveoclock.plugintemplate.TemplatePlugin
+api-version: 1.20
+main: dev.twelveoclock.worldgentesting.WorldGenTestingPlugin
 
 commands:
-  meow:
-    usage: "/meow"
-    description: "Spawns a cute catto with the name configured!"
+  createWorld:
+    usage: "/createWorld <worldName>"
+    description: "Creates a new world with the given name"
+  deleteWorld:
+    usage: "/deleteWorld <worldName>"
+    description: "Deletes a world with the given name"
+  switchWorld:
+    usage: "/switchWorld <worldName>"
+    description: "Switches to the world with the given name"

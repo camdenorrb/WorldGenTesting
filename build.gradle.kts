@@ -23,7 +23,6 @@ dependencies {
     implementation("com.moandjiezana.toml:toml4j:0.7.2")
 
     testImplementation(kotlin("test-junit5"))
-    testImplementation("com.github.seeseemelk:MockBukkit-v1.17:1.13.0")
 }
 
 
@@ -39,11 +38,11 @@ tasks {
     //       "me.example.catplugin.libs.org.jetbrains".
     //       Then, follow this pattern to the other relocate calls.
     shadowJar {
-        relocate("org.jetbrains", "dev.twelveoclock.plugintemplate.libs.org.jetbrains")
-        relocate("org.intellij", "dev.twelveoclock.plugintemplate.libs.org.intellij")
-        relocate("com.google", "dev.twelveoclock.plugintemplate.libs.com.google")
-        relocate("com.moandjiezana", "dev.twelveoclock.plugintemplate.libs.com.moandjiezana")
-        relocate("kotlin", "dev.twelveoclock.plugintemplate.libs.kotlin")
+        relocate("org.jetbrains", "dev.twelveoclock.worldgentesting.libs.org.jetbrains")
+        relocate("org.intellij", "dev.twelveoclock.worldgentesting.libs.org.intellij")
+        relocate("com.google", "dev.twelveoclock.worldgentesting.libs.com.google")
+        relocate("com.moandjiezana", "dev.twelveoclock.worldgentesting.libs.com.moandjiezana")
+        relocate("kotlin", "dev.twelveoclock.worldgentesting.libs.kotlin")
     }
 
 }

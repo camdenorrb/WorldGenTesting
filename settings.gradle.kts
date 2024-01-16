@@ -1,2 +1,2 @@
-rootProject.name = "KotlinGradleSpigotPluginTemplate"
+rootProject.name = "WorldGenTesting"
 

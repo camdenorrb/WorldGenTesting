@@ -1,4 +1,4 @@
-package dev.twelveoclock.plugintemplate.modules.base
+package dev.twelveoclock.worldgentesting.modules.base
 
 import org.bukkit.event.HandlerList
 import org.bukkit.event.Listener

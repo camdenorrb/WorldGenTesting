@@ -1,4 +1,4 @@
-package dev.twelveoclock.plugintemplate.modules.base
+package dev.twelveoclock.worldgentesting.modules.base
 
 /**
  * The base for something that can be enabled or disabled
