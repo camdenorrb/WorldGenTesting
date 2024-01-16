@@ -5,6 +5,7 @@ import org.bukkit.WorldCreator
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
+import org.bukkit.entity.Player
 
 class CreateWorldCommand(val plugin: WorldGenTestingPlugin) : CommandExecutor {
 
@@ -15,8 +16,7 @@ class CreateWorldCommand(val plugin: WorldGenTestingPlugin) : CommandExecutor {
 			return true
 		}
 
-		val world = plugin.server.getWorld(args[0])
-		if (world != null) {
+		if (plugin.server.getWorld(args[0]) != null) {
 			sender.sendMessage("A world with that name already exists")
 			return true
 		}
@@ -28,9 +28,10 @@ class CreateWorldCommand(val plugin: WorldGenTestingPlugin) : CommandExecutor {
 		}
 
 		val worldCreator = WorldCreator(args[0]).generator(generator)
-		plugin.server.createWorld(worldCreator)
+		val world = plugin.server.createWorld(worldCreator)
 
 		sender.sendMessage("Created world ${args[0]} with generator ${args[1]}")
+		(sender as? Player)?.teleport(world!!.spawnLocation)
 
 		return true
 	}

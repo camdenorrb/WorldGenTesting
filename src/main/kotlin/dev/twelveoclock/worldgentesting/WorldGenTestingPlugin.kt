@@ -1,6 +1,7 @@
 package dev.twelveoclock.worldgentesting
 
 import dev.twelveoclock.worldgentesting.generators.FlatWorldGenerator
+import dev.twelveoclock.worldgentesting.generators.VoidWorldGenerator
 import dev.twelveoclock.worldgentesting.modules.CommandModule
 import dev.twelveoclock.worldgentesting.modules.WorldGenModule
 import org.bukkit.generator.ChunkGenerator
@@ -9,7 +10,8 @@ import org.bukkit.plugin.java.JavaPlugin
 class WorldGenTestingPlugin : JavaPlugin() {
 
     val worldGeneratorByID = mutableMapOf<String, ChunkGenerator>(
-        "flat" to FlatWorldGenerator()
+        "flat" to FlatWorldGenerator(),
+        "void" to VoidWorldGenerator()
     )
 
     val commandModule = CommandModule(this)
