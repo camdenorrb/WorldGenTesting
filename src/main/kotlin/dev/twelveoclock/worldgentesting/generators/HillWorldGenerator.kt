@@ -8,14 +8,18 @@ import kotlin.random.Random
 
 class HillWorldGenerator : ChunkGenerator() {
 
+	// This needs to be defined outside of the generateSurface function
 	val simplexNoise = SimplexNoiseGenerator(Random.nextLong())
 
+	// TODO: Look at voxel sniper to see how the smooth brush works
 	override fun generateSurface(worldInfo: WorldInfo, random: java.util.Random, chunkX: Int, chunkZ: Int, chunkData: ChunkData) {
 
+		val chunkSize = 16
+		val baseHeight = 50
 
 		// Noise parameters
 		val octaves = 4
-		val frequency = 0.1
+		val frequency = 0.07
 		val amplitude = 5.0
 
 
@@ -23,25 +27,20 @@ class HillWorldGenerator : ChunkGenerator() {
 		for (x in 0..15) {
 			for (z in 0..15) {
 
-				val chunkSize = 16
-				val baseHeight = 90
 
 				val worldX = chunkX * chunkSize + x
 				val worldZ = chunkZ * chunkSize + z
+				val noiseValue = simplexNoise.noise(worldX.toDouble(), worldZ.toDouble(), octaves, frequency, amplitude)
+				val height = (baseHeight + noiseValue).coerceIn(chunkData.minHeight.toDouble(), chunkData.maxHeight.toDouble())
 
+
+				//
 				// Set blocks based on calculated height
 				for (y in chunkData.minHeight..chunkData.maxHeight) {
-
-					val noiseValue = simplexNoise.noise(worldX.toDouble(), y.toDouble(), worldZ.toDouble(), octaves, frequency, amplitude)
-					// Combine noise and wave, apply base height and hill height
-					val height = baseHeight + noiseValue
-
-
-
 					when {
 						y < height - 4 -> chunkData.setBlock(x, y, z, Material.STONE)
+						y == height.toInt() -> chunkData.setBlock(x, y, z, Material.GRASS_BLOCK)
 						y < height -> chunkData.setBlock(x, y, z, Material.DIRT)
-						y.toDouble() == height -> chunkData.setBlock(x, y, z, Material.GRASS_BLOCK)
 						//y < 100 -> chunkData.setBlock(x, y, z, Material.WATER)
 					}
 				}
