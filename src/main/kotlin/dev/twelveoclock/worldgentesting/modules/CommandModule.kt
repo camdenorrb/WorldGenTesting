@@ -13,15 +13,34 @@ class CommandModule(override val plugin: WorldGenTestingPlugin) : PluginModule()
 	val deleteWorldCommand = DeleteWorldCommand(plugin)
 
 	override fun onEnable() {
-		plugin.getCommand("createWorld")?.setExecutor(createWorldCommand)
-		plugin.getCommand("switchWorld")?.setExecutor(switchWorldCommand)
-		plugin.getCommand("deleteWorld")?.setExecutor(deleteWorldCommand)
+		// TODO: Simplify this
+		plugin.getCommand("createWorld")?.let {
+			it.setExecutor(createWorldCommand)
+			it.tabCompleter = createWorldCommand
+		}
+		plugin.getCommand("switchWorld")?.let {
+			it.setExecutor(switchWorldCommand)
+			it.tabCompleter = switchWorldCommand
+		}
+		plugin.getCommand("deleteWorld")?.let {
+			it.setExecutor(deleteWorldCommand)
+			it.tabCompleter = deleteWorldCommand
+		}
 	}
 
 	override fun onDisable() {
-		plugin.getCommand("createWorld")?.setExecutor(null)
-		plugin.getCommand("switchWorld")?.setExecutor(null)
-		plugin.getCommand("deleteWorld")?.setExecutor(null)
+		plugin.getCommand("createWorld")?.let {
+			it.setExecutor(null)
+			it.tabCompleter = null
+		}
+		plugin.getCommand("switchWorld")?.let {
+			it.setExecutor(null)
+			it.tabCompleter = null
+		}
+		plugin.getCommand("deleteWorld")?.let {
+			it.setExecutor(null)
+			it.tabCompleter = null
+		}
 	}
 
 }
