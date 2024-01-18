@@ -1,9 +1,6 @@
 package dev.twelveoclock.worldgentesting
 
-import dev.twelveoclock.worldgentesting.generators.DefaultWorldGenerator
-import dev.twelveoclock.worldgentesting.generators.FlatWorldGenerator
-import dev.twelveoclock.worldgentesting.generators.HillWorldGenerator
-import dev.twelveoclock.worldgentesting.generators.VoidWorldGenerator
+import dev.twelveoclock.worldgentesting.generators.*
 import dev.twelveoclock.worldgentesting.modules.CommandModule
 import dev.twelveoclock.worldgentesting.modules.WorldGenModule
 import org.bukkit.generator.ChunkGenerator
@@ -20,6 +17,7 @@ class WorldGenTestingPlugin : JavaPlugin() {
         "void" to VoidWorldGenerator(),
         "default" to DefaultWorldGenerator(),
         "hill" to HillWorldGenerator(),
+        "plot" to PlotWorldGenerator(16, 4),
     )
 
     /*
