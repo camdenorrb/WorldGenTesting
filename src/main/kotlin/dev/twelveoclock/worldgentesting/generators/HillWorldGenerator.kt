@@ -12,7 +12,7 @@ class HillWorldGenerator : ChunkGenerator() {
 	val simplexNoise = SimplexNoiseGenerator(Random.nextLong())
 
 	// TODO: Look at voxel sniper to see how the smooth brush works
-	override fun generateSurface(worldInfo: WorldInfo, random: java.util.Random, chunkX: Int, chunkZ: Int, chunkData: ChunkData) {
+	override fun generateNoise(worldInfo: WorldInfo, random: java.util.Random, chunkX: Int, chunkZ: Int, chunkData: ChunkData) {
 
 		val chunkSize = 16
 		val baseHeight = 50
@@ -27,14 +27,12 @@ class HillWorldGenerator : ChunkGenerator() {
 		for (x in 0..15) {
 			for (z in 0..15) {
 
-
 				val worldX = chunkX * chunkSize + x
 				val worldZ = chunkZ * chunkSize + z
 				val noiseValue = simplexNoise.noise(worldX.toDouble(), worldZ.toDouble(), octaves, frequency, amplitude)
-				val height = (baseHeight + noiseValue).coerceIn(chunkData.minHeight.toDouble(), chunkData.maxHeight.toDouble())
+				val height =
+					(baseHeight + noiseValue).coerceIn(chunkData.minHeight.toDouble(), chunkData.maxHeight.toDouble())
 
-
-				//
 				// Set blocks based on calculated height
 				for (y in chunkData.minHeight..chunkData.maxHeight) {
 					when {
@@ -46,10 +44,6 @@ class HillWorldGenerator : ChunkGenerator() {
 				}
 			}
 		}
-	}
-
-	fun linearInterpolate(a: Double, b: Double, blend: Double): Double {
-		return (1.0 - blend) * a + blend * b
 	}
 
 }

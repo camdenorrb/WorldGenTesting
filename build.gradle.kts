@@ -8,6 +8,7 @@ version = "1.0.0"
 
 repositories {
 
+    //mavenLocal()
     mavenCentral()
 
     maven("https://hub.spigotmc.org/nexus/content/repositories/public/") {
@@ -17,6 +18,7 @@ repositories {
 
 dependencies {
 
+    //compileOnly("org.spigotmc:spigot:1.20.4-R0.1-SNAPSHOT")
     compileOnly("org.spigotmc:spigot-api:1.20.4-R0.1-SNAPSHOT")
 
     implementation(kotlin("stdlib-jdk8"))
