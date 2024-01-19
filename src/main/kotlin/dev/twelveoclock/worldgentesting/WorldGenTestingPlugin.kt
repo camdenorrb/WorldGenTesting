@@ -17,7 +17,7 @@ class WorldGenTestingPlugin : JavaPlugin() {
         "void" to VoidWorldGenerator(),
         "default" to DefaultWorldGenerator(),
         "hill" to HillWorldGenerator(),
-        "plot" to PlotWorldGenerator(16, 4),
+        "plot" to PlotWorldGenerator(50, 4),
     )
 
     /*

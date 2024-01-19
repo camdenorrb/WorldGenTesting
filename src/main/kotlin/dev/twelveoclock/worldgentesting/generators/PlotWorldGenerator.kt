@@ -33,7 +33,7 @@ class PlotWorldGenerator(val plotSize: Int, val roadSize: Int) : ChunkGenerator(
 
 				if (modX == roadSize && modZ == 0) {
 					chunkData.setBlock(x, 0, z, Material.STONE)
-					chunkData.setBlock(x, 1, z, Material.DIRT)
+					chunkData.setBlock(x, 1, z, Material.QUARTZ_BLOCK)
 					chunkData.setBlock(x, 2, z, Material.OAK_WALL_SIGN)
 
 					chunkData.getTypeAndData(x, 2, z)
@@ -59,6 +59,10 @@ class PlotWorldGenerator(val plotSize: Int, val roadSize: Int) : ChunkGenerator(
 				}
 			}
 		}
+	}
+
+	override fun shouldGenerateMobs(): Boolean {
+		return false
 	}
 
 	/*
