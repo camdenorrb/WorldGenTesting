@@ -1,6 +1,6 @@
 plugins {
     kotlin("jvm") version "1.9.22"
-    id("io.github.goooler.shadow") version "8.1.3"
+    id("io.github.goooler.shadow") version "8.1.5"
 }
 
 group = "dev.twelveoclock"
